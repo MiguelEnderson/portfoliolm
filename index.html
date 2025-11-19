@@ -1,105 +1,136 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LM Fotografias</title>
-  <style>
-    /* Reset básico */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Arial', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LM Fotografias</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Montserrat', sans-serif; }
+  body { background:#0f0f0f; color:#f5f5f5; line-height:1.6; }
+  
+  header { text-align:center; padding:60px 20px; background: linear-gradient(135deg,#111,#222); }
+  header h1 { font-size:3em; color:#ffd700; letter-spacing:2px; margin-bottom:10px; }
+  header p { font-size:1.3em; color:#ccc; max-width:600px; margin:0 auto; }
 
-    body {
-      background-color: #0d0d0d;
-      color: #f0f0f0;
-      line-height: 1.6;
-    }
+  .about { padding:50px 20px; max-width:900px; margin:0 auto; text-align:center; }
+  .about h2 { font-size:2em; color:#1e90ff; margin-bottom:20px; }
+  .about p { font-size:1.1em; color:#ddd; }
 
-    header {
-      text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(135deg, #1c1c1c, #333);
-    }
+  .filter-buttons { text-align:center; margin-bottom:40px; }
+  .filter-buttons button { 
+    background:#1e90ff; color:#fff; border:none; padding:10px 20px; margin:5px; cursor:pointer; border-radius:8px; 
+    transition: all 0.3s; font-weight:600;
+  }
+  .filter-buttons button:hover, .filter-buttons button.active { background:#ffd700; color:#111; }
 
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      color: #fff;
-    }
+  .portfolio { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; max-width:1200px; margin:0 auto; }
+  .portfolio img { width:100%; border-radius:15px; box-shadow:0 10px 20px rgba(0,0,0,0.5); cursor:pointer;
+    transition: transform 0.4s, filter 0.4s, opacity 0.5s; opacity:1;
+  }
+  .portfolio img.hide { display:none; }
 
-    header p {
-      font-size: 1.2em;
-      color: #ccc;
-    }
+  .portfolio img:hover { transform: scale(1.07) rotate(1deg); filter: brightness(1.2); }
 
-    .portfolio {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 40px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+  footer { background:#111; text-align:center; padding:40px 20px; color:#ccc; }
+  footer p { margin-bottom:10px; font-weight:bold; }
+  footer a { color:#1e90ff; text-decoration:none; margin:0 12px; font-weight:600; transition:color 0.3s; }
+  footer a:hover { color:#ffd700; }
 
-    .portfolio img {
-      width: 100%;
-      border-radius: 15px;
-      transition: transform 0.3s, filter 0.3s;
-      cursor: pointer;
-    }
+  /* Lightbox */
+  .lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9);
+    justify-content:center; align-items:center; z-index:1000; }
+  .lightbox img { max-width:90%; max-height:80%; border-radius:10px; }
+  .lightbox span { position:absolute; top:20px; right:40px; font-size:3em; color:#fff; cursor:pointer; }
 
-    .portfolio img:hover {
-      transform: scale(1.05);
-      filter: brightness(1.2);
-    }
-
-    footer {
-      text-align: center;
-      padding: 30px 20px;
-      background-color: #111;
-      color: #ccc;
-    }
-
-    footer a {
-      color: #1e90ff;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  @media(max-width:600px){ header h1{font-size:2.2em;} .about h2{font-size:1.7em;} }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>LM Fotografias</h1>
-    <p>Transformando momentos em memórias inesquecíveis</p>
-  </header>
+<header>
+  <h1>LM Fotografias</h1>
+  <p>Transformando momentos em memórias inesquecíveis</p>
+</header>
 
-  <section class="portfolio">
-    <img src="foto1.jpg" alt="Foto 1">
-    <img src="foto2.jpg" alt="Foto 2">
-    <img src="foto3.jpg" alt="Foto 3">
-    <img src="foto4.jpg" alt="Foto 4">
-    <img src="foto5.jpg" alt="Foto 5">
-    <img src="foto6.jpg" alt="Foto 6">
-  </section>
+<section class="about">
+  <h2>Sobre Mim</h2>
+  <p>Fotógrafo especializado em eventos, aniversários, lifestyle e esportes. Meu objetivo é capturar cada detalhe e emoção, criando memórias que duram para sempre.</p>
+</section>
 
-  <footer>
-    <p>Contato:</p>
-    <p>
-      <a href="https://instagram.com/lmfotografiass" target="_blank">Instagram</a> |
-      <a href="https://wa.me/5587996006250" target="_blank">WhatsApp</a> |
-      <a href="mailto:edcmih@gmail.com">Email</a>
-    </p>
-  </footer>
+<div class="filter-buttons">
+  <button class="active" data-filter="all">Todos</button>
+  <button data-filter="eventos">Eventos</button>
+  <button data-filter="aniversarios">Aniversários</button>
+  <button data-filter="lifestyle">Lifestyle</button>
+  <button data-filter="esportes">Esportes</button>
+</div>
+
+<section class="portfolio">
+  <img src="foto1.jpg" alt="Evento 1" data-category="eventos">
+  <img src="foto2.jpg" alt="Aniversário 1" data-category="aniversarios">
+  <img src="foto3.jpg" alt="Lifestyle 1" data-category="lifestyle">
+  <img src="foto4.jpg" alt="Esportes 1" data-category="esportes">
+  <img src="foto5.jpg" alt="Evento 2" data-category="eventos">
+  <img src="foto6.jpg" alt="Aniversário 2" data-category="aniversarios">
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <span id="close">&times;</span>
+  <img src="" alt="Foto ampliada">
+</div>
+
+<footer>
+  <p>Entre em contato</p>
+  <p>
+    <a href="https://instagram.com/lmfotografiass" target="_blank">Instagram</a> |
+    <a href="https://wa.me/5587996006250" target="_blank">WhatsApp</a> |
+    <a href="mailto:edcmih@gmail.com">Email</a>
+  </p>
+</footer>
+
+<script>
+  // Filtro de categorias
+  const buttons = document.querySelectorAll('.filter-buttons button');
+  const images = document.querySelectorAll('.portfolio img');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      buttons.forEach(btn => btn.classList.remove('active'));
+      button.classList.add('active');
+      const filter = button.dataset.filter;
+      images.forEach(img => {
+        if(filter === 'all' || img.dataset.category === filter) {
+          img.classList.remove('hide');
+        } else {
+          img.classList.add('hide');
+        }
+      });
+    });
+  });
+
+  // Lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = lightbox.querySelector('img');
+  const closeBtn = document.getElementById('close');
+
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = img.src;
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    lightbox.style.display = 'none';
+  });
+
+  lightbox.addEventListener('click', e => {
+    if(e.target !== lightboxImg && e.target !== closeBtn) lightbox.style.display = 'none';
+  });
+</script>
 
 </body>
 </html>
+
